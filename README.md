@@ -7,6 +7,8 @@ This repo is for a blog series that I am working on over on my dev blog. Will up
 * [Laravel](https://laravel.com/) - The web framework used
 * [Laravel Sail](https://laravel.com/docs/10.x/sail) - Quick Docker environment for Laravel
 * [Laravel Telescope](https://laravel.com/docs/10.x/telescope) - Debugging tool
+* [Laravel Horizon](https://laravel.com/docs/10.x/horizon) - Queue manager
+* [Laravel Jetstream](https://jetstream.laravel.com/) - Authentication scaffolding
 * [PostgreSQL](https://www.postgresql.org/) - Database
 * [Redis](https://redis.io/) - Cache and Queue
 
