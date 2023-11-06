@@ -17,6 +17,6 @@ To get started, clone the repo and run the following commands to install the com
 composer install
 cp .env.example .env
 ./vendor/bin/sail up -d
-docker-compose exec laravel.test php artisan key:generate
-docker-compose exec laravel.test php artisan migrate
+./vendor/bin/sail artisan key:generate
+./vendor/bin/sail artisan migrate
 ```
