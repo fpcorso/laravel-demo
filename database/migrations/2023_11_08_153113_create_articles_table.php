@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('title');
-            $table->text('description');
-            $table->string('link');
             $table->string('guid');
-            $table->dateTime('pubDate');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('link')->nullable();
+            $table->dateTime('pub_date')->nullable();
 
             $table->unsignedBigInteger('feed_id');
             $table->foreign('feed_id')->references('id')->on('feeds');

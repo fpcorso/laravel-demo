@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Article;
 use App\Models\Feed;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -9,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class ParseFeed implements ShouldQueue
 {
@@ -32,6 +34,8 @@ class ParseFeed implements ShouldQueue
      */
     public function handle(): void
     {
+        Log::info("Parsing feed: {$this->feed->id} - {$this->feed->url}");
+
         $feed_url = $this->feed->url;
 
         // Parse the RSS feed
@@ -43,5 +47,18 @@ class ParseFeed implements ShouldQueue
 
         // Save the feed
         $this->feed->save();
+
+        // Loop through each item and save as an Article
+        foreach ($xml->channel->item as $item) {
+            $article = Article::firstOrCreate([
+                'guid' => $item->guid,
+                'feed_id' => $this->feed->id,
+            ]);
+            $article->title = (string) $item->title;
+            $article->description = (string) $item->description;
+            $article->link = (string) $item->link;
+            $article->pub_date = (string) $item->pubDate;
+            $article->save();
+        }
     }
 }

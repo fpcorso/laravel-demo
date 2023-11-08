@@ -9,12 +9,5 @@ class Feed extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     */
-    protected $fillable = [
-        'title',
-        'url',
-        'description',
-    ];
+    protected $guarded = [];
 }
