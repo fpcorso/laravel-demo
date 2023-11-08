@@ -21,7 +21,7 @@ class ArticleFactory extends Factory
             'description' => $this->faker->paragraphs(3, true),
             'link' => $this->faker->url,
             'guid' => $this->faker->uuid,
-            'pubDate' => $this->faker->dateTime,
+            'pub_date' => $this->faker->dateTime,
             'feed_id' => \App\Models\Feed::factory(),
         ];
     }
