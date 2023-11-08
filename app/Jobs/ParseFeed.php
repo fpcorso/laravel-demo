@@ -39,7 +39,12 @@ class ParseFeed implements ShouldQueue
         $feed_url = $this->feed->url;
 
         // Parse the RSS feed
-        $xml = simplexml_load_file($feed_url);
+        try {
+            $xml = simplexml_load_file($feed_url);
+        } catch (\Exception $e) {
+            Log::error("Failed to parse feed: {$this->feed->id} - {$this->feed->url}");
+            return;
+        }
 
         // Retrieve the title and description
         $this->feed->title = (string) $xml->channel->title;
@@ -49,6 +54,7 @@ class ParseFeed implements ShouldQueue
         $this->feed->save();
 
         // Loop through each item and save as an Article
+        // If a matching guid already exists, update attributes instead.
         foreach ($xml->channel->item as $item) {
             $article = Article::firstOrCreate([
                 'guid' => $item->guid,
