@@ -18,7 +18,8 @@ class FeedFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
-            'link' => $this->faker->url,
+            'url' => $this->faker->url,
+            'description' => $this->faker->paragraph,
         ];
     }
 }

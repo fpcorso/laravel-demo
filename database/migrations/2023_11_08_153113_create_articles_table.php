@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('guid');
             $table->dateTime('pubDate');
 
-            $table->unsignedBigInteger('feed_id')->nullable();
+            $table->unsignedBigInteger('feed_id');
             $table->foreign('feed_id')->references('id')->on('feeds');
         });
     }
