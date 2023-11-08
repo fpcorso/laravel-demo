@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title');
-            $table->text('summary');
+            $table->text('description');
             $table->date('release_date');
         });
     }

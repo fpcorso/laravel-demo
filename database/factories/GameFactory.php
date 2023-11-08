@@ -18,7 +18,7 @@ class GameFactory extends Factory
     {
         return [
             'title' => $this->faker->words(3, true),
-            'summary' => $this->faker->paragraphs(3, true),
+            'description' => $this->faker->paragraphs(3, true),
             'release_date' => $this->faker->date(),
         ];
     }
