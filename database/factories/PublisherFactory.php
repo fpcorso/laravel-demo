@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Game>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Publisher>
  */
-class GameFactory extends Factory
+class PublisherFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,10 +17,10 @@ class GameFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->words(3, true),
+            'name' => $this->faker->company(),
+            'founded' => $this->faker->year(),
             'description' => $this->faker->paragraphs(3, true),
-            'release_date' => $this->faker->date(),
-            'publisher_id' => \App\Models\Publisher::factory(),
+            'website' => $this->faker->url(),
         ];
     }
 }

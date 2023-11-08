@@ -5,13 +5,13 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class GameSeeder extends Seeder
+class PublisherSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        \App\Models\Game::factory(10)->create();
+        \App\Models\Publisher::factory(3)->create();
     }
 }

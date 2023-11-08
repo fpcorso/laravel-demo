@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
+            PublisherSeeder::class,
             GameSeeder::class,
         ]);
     }
