@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NonLoggedInController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [NonLoggedInController::class, 'home'])->name('home');
 
 Route::middleware([
     'auth:sanctum',
